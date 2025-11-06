@@ -58,16 +58,7 @@ export class AuthService {
       );
   }
 
-  me(): Observable<UserProfile> {
-    // return this.http.get<UserProfile>(`${this.apiUrl}/me`);
-  const dummyProfile: UserProfile = {
-    name: 'Jorge Carrasco',
-    email: 'jorge@example.com',
-    role: 'admin',
-  };
 
-  return of(dummyProfile).pipe(delay(1000));
-  }
 
   storeTokens(tokens: AuthTokens): void {
     localStorage.setItem('access', tokens.access);

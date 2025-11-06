@@ -1,1 +1,28 @@
-<p>edit-profile works!</p>
+<section>
+
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
+        <h1>Editar perfil</h1>
+        <div>
+            <label>Username</label>
+            <input type="text" formControlName="username" />
+            <small *ngIf="profileForm.get('username')?.invalid && profileForm.get('username')?.touched">
+                Mínimo 3 caracteres.
+            </small>
+        </div>
+
+        <div>
+            <label>Bio</label>
+            <textarea formControlName="bio" rows="3"></textarea>
+        </div>
+
+        <div>
+            <label>Imagen (URL)</label>
+            <input type="url" formControlName="imageUrl" placeholder="https://example.com/imagen.jpg" />
+            <div class="preview" *ngIf="profileForm.get('imageUrl')?.valid && profileForm.value.imageUrl">
+                <img [src]="profileForm.value.imageUrl" alt="Vista previa" />
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="profileForm.invalid">Guardar cambios</button>
+    </form>
+</section>

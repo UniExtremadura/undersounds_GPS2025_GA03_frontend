@@ -2,10 +2,12 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { delay, Observable, of, throwError } from 'rxjs';
-import { AuthService } from './auth.service';
+import { AuthService, UserProfile } from './auth.service';
 
 export interface User {
   id: number;
+  avatarUrl?: string;
+  email?: string;
   username: string;
   role: 'admin' | 'artist' | 'listener';
   bio: string;
@@ -52,6 +54,33 @@ export class UserService {
     return of(this.dummyUsers).pipe(delay(300));
   }
 
+  me(): Observable<User> {
+    // return this.http.get<User>(`${this.apiUrl}/me`);
+    const dummyProfile: User = {
+      id: 99,
+      avatarUrl: 'https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png',
+      bio: 'Administrador de la plataforma.',
+      username: 'Jorge Carrasco',
+      email: 'jorge@example.com',
+      role: 'admin',
+    };
+
+    return of(dummyProfile).pipe(delay(1000));
+  }
+
+  patchMe(): Observable<User>{
+    // return this.http.patch<User>(`${this.apiUrl}/me`, data);
+        const dummyProfile: User = {
+      id: 99,
+      avatarUrl: 'https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png',
+      bio: 'Administrador de la plataforma.',
+      username: 'Jorge Carrasco',
+      email: 'jorge@example.com',
+      role: 'admin',
+    };
+    return of(dummyProfile).pipe(delay(1000));
+  }
+  
   deleteUser(userId: number): Observable<void> {
     // return this.http.delete<void>(`${this.apiUrl}/users/${userId}`);
     if (this.userRole !== 'admin') {
@@ -67,7 +96,6 @@ export class UserService {
   }
 
   deleteSelfAccount(): Observable<void> {
-
     // Cambiar por el endpoint real (no existe en el backend)
     return of(undefined).pipe(delay(300));
   }

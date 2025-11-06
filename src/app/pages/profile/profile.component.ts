@@ -5,7 +5,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../component/confirm-dialog/confirm-dialog.component';
-import { UserService } from '../../services/user.service';
+import { User, UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -18,14 +18,14 @@ export class ProfileComponent implements OnInit {
   private readonly userService = inject(UserService);
   private readonly destroyRef = inject(DestroyRef);
 
-  readonly user = signal<UserProfile | null>(null);
+  readonly user = signal<User | null>(null);
   readonly loading = signal(true);
   readonly error = signal<string | null>(null);
 
   constructor(private router: Router, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.authService
+    this.userService
       .me()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
