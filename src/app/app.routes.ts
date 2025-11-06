@@ -13,6 +13,7 @@ import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 export const routes: Routes = [
   {
     path: '',
@@ -31,6 +32,7 @@ export const routes: Routes = [
       { path: 'privacy', component: PrivacyComponent },
       { path: 'login', component: LoginComponent },
       { path: 'admin/dashboard', component: UserDashboardComponent },
+      { path: 'profile/edit', component: EditProfileComponent },
     ],
   },
 ];

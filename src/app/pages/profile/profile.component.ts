@@ -44,6 +44,10 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  editProfile(): void {
+    this.router.navigate(['/profile/edit']);
+  }
+
   onDeleteAccount(): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: { name: 'tu cuenta' },

@@ -8,6 +8,7 @@
   <ng-container *ngIf="user() as profile; else errorState">
     <section>
       <div class="profile-actions">
+        <button (click)="editProfile()">Configuración</button>
         <button (click)="onDeleteAccount()" class="btn-delete-account">
           Borrar cuenta
         </button>
