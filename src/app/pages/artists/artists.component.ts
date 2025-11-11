@@ -7,15 +7,19 @@ type ArtistCard = {
 
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-artists',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './artists.component.html',
-  styleUrl: './artists.component.css',
+  styleUrls: ['./artists.component.css'],
 })
 export class ArtistsComponent {
+  searchQuery: string = '';
+  filteredArtists: ArtistCard[] = [];
   readonly artists: ArtistCard[] = [
     {
       name: 'Luna Waves',
@@ -36,4 +40,15 @@ export class ArtistsComponent {
       image: 'assets/images/artists/artist-3.svg',
     },
   ];
+
+    searchArtists(): void {
+    const query = this.searchQuery.toLowerCase().trim();
+    if(!query) {
+      this.filteredArtists = this.artists;
+      return;
+    }
+    this.filteredArtists = this.artists.filter(artist =>
+    artist.name.toLowerCase().includes(query) 
+    );
+  }
 }
