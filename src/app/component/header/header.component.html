@@ -34,6 +34,11 @@
       <button type="button" class="header-link" (click)="navigateToLogin()">
         <span class="header-link__label">Iniciar sesión</span>
       </button>
+      
+      <button type="button"  *ngIf="userRole === 'artist'" class="header-link" (click)="navigateToUploadMerch()">
+        <span class="header-link__label"> subir artículo</span>
+      </button>
+      
     </div>
   </div>
 </header>

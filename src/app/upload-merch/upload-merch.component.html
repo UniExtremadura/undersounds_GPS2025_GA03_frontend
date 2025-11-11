@@ -1,0 +1,41 @@
+<div class="modal-backdrop" *ngIf="showModal">
+  <div class="modal">
+    <h2>Sube aquí artículos con tu marca!</h2>
+    <button class="close-button" (click)="closeModal()"> × </button> 
+    <form (ngSubmit)="submitForm()" #articleForm="ngForm">
+      <label>
+        Imagen:
+        <input type="file" (change)="onFileSelected($event)" required />
+      </label>
+
+      <label>
+        Título:
+        <input type="text" [(ngModel)]="title" name="title" required />
+      </label>
+
+      <label>
+        Precio (€):
+        <input type="number" [(ngModel)]="price" name="price" required />
+      </label>
+
+      <label>
+        Descripción:
+        <input type="text" [(ngModel)]="description" name="description" required />
+      </label>
+
+      <label>
+        Tipo de artículo:
+        <select [(ngModel)]="type" name="type" required>
+          <option value="camiseta">Camiseta</option>
+          <option value="vinilo">Vinilo</option>
+          <option value="taza">Taza</option>
+          <option value="sudadera">Sudadera</option>
+          <option value="tote bag">Tote Bag</option>
+        </select>
+      </label>
+
+      
+    </form>
+    <button type="submit" [disabled]="articleForm.form.valid">Subir</button>
+  </div>
+</div>

@@ -12,7 +12,7 @@ import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-
 
 @Component({
   selector: 'app-user-dashboard',
-  imports: [CommonModule, MatDialogModule, MatSnackBarModule, ConfirmDialogComponent],
+  imports: [CommonModule, MatDialogModule, MatSnackBarModule],
   templateUrl: './user-dashboard.component.html',
   styleUrls: ['./user-dashboard.component.css'],
 })

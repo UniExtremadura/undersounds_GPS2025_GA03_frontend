@@ -13,7 +13,6 @@ import { AuthService } from '../../services/auth.service';
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
   userRole: string | null = null;
-
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
@@ -50,5 +49,11 @@ export class HeaderComponent implements OnInit {
 
   navigateToUserDashboard() {
     this.router.navigate(['/admin/dashboard']);
+  }
+
+  navigateToUploadMerch() {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+    this.router.navigate(['/upload-merch']);
+  });
   }
 }
